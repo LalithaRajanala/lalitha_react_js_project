@@ -10,10 +10,22 @@ const Pet = (props) => {
 const App = () => {
   return React.createElement("div", {}, [
     React.createElement("h1", {}, "Adopt me!"),
-    React.createElement(Pet, { name: "Mochi", animal: "Dog" }),
-    React.createElement(Pet, { name: "Butter", animal: "Dog" }),
-    React.createElement(Pet, { name: "Waffles", animal: "Dog" }),
-    React.createElement(Pet, { name: "Snickers", animal: "Dog" }),
+    React.createElement(Pet, {
+      name: "Mochi",
+      animal: "Dog",
+    }),
+    React.createElement(Pet, {
+      name: "Butter",
+      animal: "Dog",
+    }),
+    React.createElement(Pet, {
+      name: "Waffles",
+      animal: "Dog",
+    }),
+    React.createElement(Pet, {
+      name: "Snickers",
+      animal: "Dog",
+    }),
   ]);
 };
 
