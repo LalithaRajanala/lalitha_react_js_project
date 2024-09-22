@@ -4,6 +4,8 @@
   "description": "Lalitha ReactJs Demo project",
   "main": "index.js",
   "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +19,11 @@
   },
   "homepage": "https://github.com/LalithaRajanala/lalitha_react_js_project#readme",
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
+    "eslint": "^9.11.0",
+    "eslint-prettier-config": "^1.0.1",
     "prettier": "^3.3.3"
-  }
+  },
+  "type": "module"
 }
