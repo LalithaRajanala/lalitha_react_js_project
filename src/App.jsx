@@ -1,13 +1,7 @@
 import React from "react";
 import { createRoot }  from "react-dom";
+import Pet from './Pet';
 
-const Pet = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, props.name),
-    React.createElement("h2", {}, props.animal),
-    React.createElement("h2", {}, "Maltipoo"),
-  ]);
-};
 
 // Your script goes here
 const App = () => {
@@ -16,18 +10,22 @@ const App = () => {
     React.createElement(Pet, {
       name: "Mochi",
       animal: "Dog",
+      breed: "Maltipoo"
     }),
     React.createElement(Pet, {
       name: "Butter",
       animal: "Dog",
+      breed: "Maltipoo"
     }),
     React.createElement(Pet, {
       name: "Waffles",
       animal: "Dog",
+      breed: "Maltipoo"
     }),
     React.createElement(Pet, {
       name: "Snickers",
       animal: "Dog",
+      breed: "Maltipoo"
     }),
   ]);
 };
