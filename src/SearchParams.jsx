@@ -7,9 +7,9 @@ export const SearchParams = () => {
   const breeds = [];
 
   return (
-    <div>
+    <div class="search-params">
       <form>
-        <label htmlFor="locationField">"Enter location"</label>
+        <label htmlFor="locationField">Location</label>
         <input
           className="search-params"
           id="locationField"
@@ -18,7 +18,7 @@ export const SearchParams = () => {
           placeholder="location"
         />
 
-        <label for="animal">Select your fav animal:</label>
+        <label for="animal">Animal</label>
         <select
           id="animal"
           value={animal}
@@ -29,7 +29,7 @@ export const SearchParams = () => {
           ))}
         </select>
 
-        <label for="breed">Select your fav animal breed:</label>
+        <label for="breed">Breed</label>
         <select
           id="breed"
           value={breed}
