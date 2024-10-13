@@ -1,15 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Pet from "./Pet";
 
 export const SearchParams = () => {
   const ANIMALS = ["cat", "bird", "dog", "dolphin"];
-  const breeds = ["lab"];
-  const [location, setLocation] = useState("Lalitha state");
+  const breeds = ["Havanese"];
+  const [location, setLocation] = useState("Seattle");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
+  const [pets, setPets] = useState([]);
+
+  useEffect(() => {
+    requestPets();
+  }, []);
+
+  async function requestPets() {
+    const results = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`,
+    );
+    const json = await results.json();
+    setPets(json.pets);
+  }
 
   return (
-    <div class="search-params">
-      <form>
+    <div className="search-params">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="locationField">Location</label>
         <input
           className="search-params"
@@ -19,7 +38,7 @@ export const SearchParams = () => {
           placeholder="location"
         />
 
-        <label for="animal">Animal</label>
+        <label htmlFor="animal">Animal</label>
         <select
           id="animal"
           value={animal}
@@ -34,7 +53,7 @@ export const SearchParams = () => {
           ))}
         </select>
 
-        <label for="breed">Breed</label>
+        <label htmlFor="breed">Breed</label>
         <select
           id="breed"
           value={breed}
@@ -46,7 +65,18 @@ export const SearchParams = () => {
             <option>{breed}</option>
           ))}
         </select>
+        <input type="submit" value="Submit" />
       </form>
+      {pets.map((pet) => {
+        return (
+          <Pet
+            name={pet.name}
+            breed={pet.breed}
+            animal={pet.animal}
+            key={pet.id}
+          />
+        );
+      })}
     </div>
   );
 };
