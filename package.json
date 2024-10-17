@@ -39,6 +39,7 @@
   },
   "type": "module",
   "dependencies": {
-    "eslint-plugin-import": "^2.30.0"
+    "eslint-plugin-import": "^2.30.0",
+    "react-router-dom": "^6.4.1"
   }
 }
