@@ -1,12 +1,17 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useState, useContext } from "react";
 import Carousal from "./Carousal";
 import fetchPet from "./fetchPet";
 import ErrorBoundary from "./ErrorBoundary";
+import AdoptedPetContext from "./AdoptedPetContext";
 import Modal from "./Modal";
 
 const Details = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [_, setAdoptedPet] = useContext(AdoptedPetContext);
   const { id } = useParams();
+  const navigate = useNavigate();
   const results = useQuery({
     queryKey: ["details", id],
     queryFn: fetchPet,
@@ -25,15 +30,36 @@ const Details = () => {
   return (
     <ErrorBoundary>
       <div className="details">
-        <Modal />
         <Carousal images={pet.images} />
         <div>
           <h1>{pet.name}</h1>
           <h2>
             {pet.animal} - {pet.breed} - {pet.city} - {pet.state}
           </h2>
-          <button>Adopt {pet.name}</button>
+          <button
+            onClick={() => {
+              return setShowModal(true);
+            }}
+          >
+            Adopt {pet.name}
+          </button>
           <p>{pet.description}</p>
+          {showModal ? (
+            <Modal>
+              <h1>Do you want to adopt {pet.name} ?</h1>
+              <div className="buttons">
+                <button
+                  onClick={() => {
+                    setAdoptedPet(pet);
+                    navigate("/");
+                  }}
+                >
+                  Yes
+                </button>
+                <button onClick={() => setShowModal(false)}>No</button>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     </ErrorBoundary>
