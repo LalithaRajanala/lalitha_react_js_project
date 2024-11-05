@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Carousal from "./Carousal";
 import fetchPet from "./fetchPet";
 import ErrorBoundary from "./ErrorBoundary";
+import Modal from "./Modal";
 
 const Details = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const Details = () => {
   return (
     <ErrorBoundary>
       <div className="details">
+        <Modal />
         <Carousal images={pet.images} />
         <div>
           <h1>{pet.name}</h1>
